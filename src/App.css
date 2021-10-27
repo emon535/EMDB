@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* Custom CSS by Foysal */
+
+.movie-list {
+  border: 1px solid red;
+}
