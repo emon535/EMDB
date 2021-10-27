@@ -1,15 +1,28 @@
+import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './App';
+import { Route, Router } from 'react-router';
 import { store } from './app/store';
+import { Home } from './Containers/Home';
+import Movies from './Containers/Movies';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import Root from './Root';
 
 ReactDOM.render(
   <React.StrictMode>
    <Provider store={store}>
-    <App />
+    {/* <App /> */}
+
+    <Router history={createBrowserHistory()}>
+    <Route path="/" component={Root}>
+        <Route  exact path="/" component={Home} />
+        <Route exact path="/movies" component={Movies} />
+        <Route exact path="/movies/:id" render={()=><h1>Hello ID</h1>}/>
+      </Route>
+    </Router>
+
   </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
