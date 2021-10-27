@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useGetMovieByPageNumberQuery } from "./services/movieApiService";
 
 function App() {
+
+  const {data,error, isLoading, isSuccess, isError} = useGetMovieByPageNumberQuery({listId:"1", pageNo:"1"});
+  console.log("🚀 ~ file: App.js ~ line 7 ~ App ~ error", error)
+  console.log("🚀 ~ file: App.js ~ line 7 ~ App ~ isLoading", isLoading)
+  console.log("🚀 ~ file: App.js ~ line 7 ~ App ~ data", data)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isError && <h4>Something went wrong</h4>}
+      {isSuccess && <h4>Movie Database is parsed successfully</h4>}
+      <div >
+        
+      </div>
     </div>
   );
 }
