@@ -1,9 +1,13 @@
 import React from "react";
-import { useGetMovieByPageNumberQuery } from "../services/movieApiService";
+import { useGetMovieByPageNumberQuery, useGetMovieGenreQuery } from "../services/movieApiService";
 
 export default function Movies() {
-  const { data, error, isLoading, isSuccess, isError } =
+  const { data: mData , error, isLoading, isSuccess, isError } =
     useGetMovieByPageNumberQuery({ listId: "3", pageNo: "2" });
+
+
+    const { data: genraData, error:gerror, isLoading:isGLoading, isSuccess:isGSuccess, isError:isGError } =
+    useGetMovieGenreQuery({ listId: "3", pageNo: "2" });
 
   return (
     <div className="App">
@@ -11,8 +15,8 @@ export default function Movies() {
       {isSuccess && <h4>Movie Database is parsed successfully</h4>}
       <div>
         {isSuccess &&
-          data &&
-          data.results.map((movie) => {
+          mData &&
+          mData.results.map((movie) => {
             return (
               <div class="w-full lg:w">
                 <div>

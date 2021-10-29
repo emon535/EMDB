@@ -19,11 +19,11 @@ ReactDOM.render(
     <Route path="/" component={Root}>
         <Route  exact path="/" component={Home} />
         <Route exact path="/movies" component={Movies} />
-        <Route exact path="/movies/:id" render={()=><h1>Hello ID</h1>}/>
+        <Route exact path="/genre" render={()=><h1>Hello ID</h1>}/>
       </Route>
     </Router>
 
-  </Provider>,
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
